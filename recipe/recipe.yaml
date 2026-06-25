@@ -15,11 +15,16 @@ build:
 
 requirements:
   build:
-    - python
+    - if: build_platform != target_platform
+      then:
+        - python
+        - cross-python_${{ target_platform }}
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
   host:
-    - python
+    - if: build_platform != target_platform
+      then:
+        - python
     - setuptools >=61
     - pip
   run:
