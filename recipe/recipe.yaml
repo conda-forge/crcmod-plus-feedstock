@@ -10,7 +10,7 @@ source:
     sha256: 732ffe3c3ce3ef9b272e1827d8fb894590c4d6ff553f2a2b41ae30f4f94b0f5d
 
 build:
-  number: 1
+  number: 2
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
@@ -22,9 +22,7 @@ requirements:
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
   host:
-    - if: build_platform != target_platform
-      then:
-        - python
+    - python
     - setuptools >=61
     - pip
   run:
